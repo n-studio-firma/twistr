@@ -7,35 +7,68 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="app-layout">
-    <header class="app-header">
-      <div class="header-logo">🐦 Twistr</div>
-      <div class="header-right">
-        <span class="user-name" id="user-display"></span>
-        <button class="logout-btn" id="logout-btn">ログアウト</button>
-      </div>
-    </header>
+  <div class="app-page">
 
-    <section class="composer">
-      <div class="composer-inner">
-        <div class="composer-avatar" id="composer-avatar">?</div>
-        <div class="composer-right">
-          <textarea
-            id="tweet-input"
-            placeholder="いまどうしてる？"
-            rows="3"
-          ></textarea>
-          <div class="composer-footer">
-            <span class="char-counter" id="char-counter">280</span>
-            <button class="tweet-submit-btn" id="tweet-btn" disabled>ツイート</button>
-          </div>
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">✦<span> Twistr</span></div>
+
+      <p class="sidebar-section-label">メニュー</p>
+      <a class="nav-item active" href="#">
+        <span class="nav-icon">🏠</span>
+        <span>ホーム</span>
+      </a>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-user">
+        <div class="sidebar-avatar av-0" id="sidebar-avatar">?</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-display-name" id="user-display">…</div>
+          <div class="sidebar-handle" id="user-handle">@…</div>
         </div>
       </div>
-    </section>
 
-    <main id="tweet-feed">
-      <p class="empty-msg">読み込み中...</p>
-    </main>
+      <button class="sidebar-logout" id="logout-btn">
+        ログアウト
+      </button>
+    </aside>
+
+    <!-- ── Feed ── -->
+    <div class="feed-column">
+      <div class="feed-header">
+        <h2>ホーム</h2>
+      </div>
+
+      <section class="composer">
+        <div class="composer-inner">
+          <div class="composer-avatar av-0" id="composer-avatar">?</div>
+          <div class="composer-right">
+            <textarea id="tweet-input" placeholder="いまどうしてる？"></textarea>
+            <div class="composer-footer">
+              <!-- SVG ring counter -->
+              <div class="char-ring-wrap" title="残り文字数">
+                <svg class="char-ring" width="28" height="28" viewBox="0 0 28 28">
+                  <circle class="char-ring-bg" cx="14" cy="14" r="11"/>
+                  <circle class="char-ring-fg" id="char-ring-fg" cx="14" cy="14" r="11"
+                          stroke-dasharray="69.1" stroke-dashoffset="0"/>
+                </svg>
+                <span class="char-count-label" id="char-counter"></span>
+              </div>
+              <button class="tweet-submit-btn" id="tweet-btn" disabled>投稿する</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main id="tweet-feed">
+        <p class="empty-msg">
+          <span class="empty-icon">⏳</span>
+          読み込み中…
+        </p>
+      </main>
+    </div>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
