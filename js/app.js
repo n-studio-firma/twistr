@@ -12,7 +12,9 @@ async function init() {
     .single();
 
   currentProfile = profile;
-  document.getElementById('user-display').textContent = profile?.display_name || profile?.username || currentUser.email;
+  const displayName = profile?.display_name || profile?.username || currentUser.email;
+  document.getElementById('user-display').textContent = displayName;
+  document.getElementById('composer-avatar').textContent = displayName.charAt(0).toUpperCase();
 
   await loadTweets();
   setupComposer();
